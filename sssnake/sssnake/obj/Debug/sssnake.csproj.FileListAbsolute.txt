@@ -1,0 +1,7 @@
+C:\Users\YAUHENI KAROL\Desktop\sssnake\sssnake\sssnake\bin\Debug\sssnake.exe.config
+C:\Users\YAUHENI KAROL\Desktop\sssnake\sssnake\sssnake\bin\Debug\sssnake.exe
+C:\Users\YAUHENI KAROL\Desktop\sssnake\sssnake\sssnake\bin\Debug\sssnake.pdb
+C:\Users\YAUHENI KAROL\Desktop\sssnake\sssnake\sssnake\obj\Debug\sssnake.csprojAssemblyReference.cache
+C:\Users\YAUHENI KAROL\Desktop\sssnake\sssnake\sssnake\obj\Debug\sssnake.csproj.CoreCompileInputs.cache
+C:\Users\YAUHENI KAROL\Desktop\sssnake\sssnake\sssnake\obj\Debug\sssnake.exe
+C:\Users\YAUHENI KAROL\Desktop\sssnake\sssnake\sssnake\obj\Debug\sssnake.pdb
