@@ -12,6 +12,11 @@ namespace sssnake
         public int y;
         public char symbol;
 
+        public Point()
+        {
+            Console.WriteLine("Ebal smartgit");
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
