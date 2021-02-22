@@ -10,22 +10,20 @@ namespace sssnake
     {
         static void Main(string[] args)
         {
+            Console.SetWindowSize(60, 25);
+            Console.SetBufferSize(60, 25);
 
-            /*List<int> numList = new List<int>();
-            numList.Add(0);
-            numList.Add(1);
-            numList.Add(2);
-            int first = numList[0];
-            int second = numList[1];
-            int third = numList[2];
-            foreach(int i in numList)
-            {
-                Console.WriteLine(i);
-            }
-            numList.RemoveAt(0); */
+            HorizontalLine upLine = new HorizontalLine(0, 58, 0, '_');
+            HorizontalLine downLine = new HorizontalLine(0, 58, 24, '_');
+            VerticalLine leftLine = new VerticalLine(1, 24, 0, '|');
+            VerticalLine rightLine = new VerticalLine(1, 24, 58, '|');
+            upLine.Draw();
+            downLine.Draw();
+            leftLine.Draw();
+            rightLine.Draw();
 
-            HorizontalLine line = new HorizontalLine(5, 10, 8, '_');
-            line.Draw();
+            Point p = new Point(4, 5, '*');
+            p.Draw();
 
             Console.ReadLine();
         }
