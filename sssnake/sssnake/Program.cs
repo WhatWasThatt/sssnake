@@ -11,13 +11,13 @@ namespace sssnake
     {
         static void Main(string[] args)
         {
-            Console.SetWindowSize(60, 25);
-            Console.SetBufferSize(60, 25);
+            Console.SetWindowSize(40, 18);
+            Console.SetBufferSize(40, 18);
 
-            HorizontalLine upLine = new HorizontalLine(0, 58, 0, '_');
-            HorizontalLine downLine = new HorizontalLine(0, 58, 24, '_');
-            VerticalLine leftLine = new VerticalLine(1, 24, 0, '|');
-            VerticalLine rightLine = new VerticalLine(1, 24, 58, '|');
+            HorizontalLine upLine = new HorizontalLine(0, 38, 0, '*');
+            HorizontalLine downLine = new HorizontalLine(0, 38, 17, '*');
+            VerticalLine leftLine = new VerticalLine(1, 17, 0, '*');
+            VerticalLine rightLine = new VerticalLine(1, 17, 38, '*');
             upLine.Draw();
             downLine.Draw();
             leftLine.Draw();
@@ -26,21 +26,19 @@ namespace sssnake
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
+
+            Console.CursorVisible = false;
+
+            while (true)
+            {
+                if(Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey(true);
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(200);
+                snake.Move();
+            }
 
             Console.ReadLine();
         }

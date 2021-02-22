@@ -40,5 +40,18 @@ namespace sssnake
             nextPoint.Move(1, direction);
             return nextPoint;
         }
+
+        internal void HandleKey(ConsoleKey key)
+        {
+            Direction last = direction;
+            if (key == ConsoleKey.LeftArrow && last != Direction.RIGHT)
+                direction = Direction.LEFT;
+            else if (key == ConsoleKey.RightArrow && last != Direction.LEFT)
+                direction = Direction.RIGHT;
+            else if (key == ConsoleKey.DownArrow && last != Direction.UP)
+                direction = Direction.DOWN;
+            else if (key == ConsoleKey.UpArrow && last != Direction.DOWN)
+                direction = Direction.UP;
+        }
     }
 }
