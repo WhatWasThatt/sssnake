@@ -14,33 +14,63 @@ namespace sssnake
             Console.SetWindowSize(40, 18);
             Console.SetBufferSize(40, 18);
 
-            HorizontalLine upLine = new HorizontalLine(0, 38, 0, '*');
-            HorizontalLine downLine = new HorizontalLine(0, 38, 17, '*');
-            VerticalLine leftLine = new VerticalLine(1, 17, 0, '*');
-            VerticalLine rightLine = new VerticalLine(1, 17, 38, '*');
-            upLine.Draw();
-            downLine.Draw();
-            leftLine.Draw();
-            rightLine.Draw();
+            Walls walls = new Walls(40, 18);
+            walls.Draw();
 
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
 
+            FoodCreator foodCreator = new FoodCreator(40, 18, '¤');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
             Console.CursorVisible = false;
 
-            while (true)
+            while(true)
             {
-                if(Console.KeyAvailable)
+                if(walls.IsHit(snake) || snake.IsHitTail())
                 {
-                    ConsoleKeyInfo key = Console.ReadKey(true);
+                    break;
+                }
+                if (snake.Eat(food))
+                {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.Move();
+                }
+
+                Thread.Sleep(400);
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleKey(key.Key);
                 }
-                Thread.Sleep(200);
-                snake.Move();
             }
-
+            GameOver();
             Console.ReadLine();
+        }
+        static void GameOver()
+        {
+            int xOffset = 25;
+            int yOffset = 8;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(xOffset, yOffset++);
+            WriteText("============================", xOffset, yOffset++);
+            WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
+            yOffset++;
+            WriteText("Автор: WhatWasThat", xOffset + 2, yOffset++);
+            WriteText("Специально для тебя", xOffset + 1, yOffset++);
+            WriteText("============================", xOffset, yOffset++);
+        }
+
+        static void WriteText(String text, int xOffset, int yOffset)
+        {
+            Console.SetCursorPosition(xOffset, yOffset);
+            Console.WriteLine(text);
         }
     }
 }

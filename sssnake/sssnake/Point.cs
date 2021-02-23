@@ -16,11 +16,11 @@ namespace sssnake
         {
         }
 
-        public Point(int _x, int _y, char _symbol)
+        public Point(int x, int y, char symbol)
         {
-            x = _x;
-            y = _y;
-            symbol = _symbol;
+            this.x = x;
+            this.y = y;
+            this.symbol = symbol;
         }
 
         public Point(Point p)
@@ -48,6 +48,11 @@ namespace sssnake
             {
                 y = y + offset;
             }
+        }
+
+        public bool IsHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
         }
 
         public void Draw()

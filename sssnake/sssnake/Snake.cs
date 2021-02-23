@@ -41,6 +41,19 @@ namespace sssnake
             return nextPoint;
         }
 
+        internal bool IsHitTail()
+        {
+            var head = pList.Last();
+            for(int i = 0; i < pList.Count - 2; ++i)
+            {
+                if(head.IsHit(pList[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         internal void HandleKey(ConsoleKey key)
         {
             Direction last = direction;
@@ -52,6 +65,21 @@ namespace sssnake
                 direction = Direction.DOWN;
             else if (key == ConsoleKey.UpArrow && last != Direction.DOWN)
                 direction = Direction.UP;
+        }
+
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if(head.IsHit(food))
+            {
+                food.symbol = head.symbol;
+                pList.Add(food);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
